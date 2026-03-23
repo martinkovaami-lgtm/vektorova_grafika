@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Triangle extends AbstractGraphicObject {
 
-    protected int a; // délka strany
+    protected int a;
 
     public Triangle(Point position, Color color, int a) {
         super(position, color);
@@ -13,12 +13,14 @@ public class Triangle extends AbstractGraphicObject {
 
     @Override
     public boolean contains(Point p) {
-        return false;
+        int dx = (int) Math.round(p.y - position.y)* Math.tan(Math.PI / 6);
+        return (p.x >= position.x && p.x < position.x + a && p.y >= position.y && p.y < position.y + a);
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(color);
 
         // Výpočet výšky rovnostranného trojúhelníku (v = a * √3 / 2)
@@ -37,7 +39,6 @@ public class Triangle extends AbstractGraphicObject {
                 position.y + v            // pravý dolní vrchol
         };
 
-        // Vykreslení mnohoúhelníku (3 vrcholy)
         g2.drawPolygon(xPoints, yPoints, 3);
     }
 }

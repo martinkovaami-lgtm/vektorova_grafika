@@ -8,16 +8,15 @@ public class Square extends AbstractGraphicObject{
 
     public Square(Point position, Color color, int a) {
         super(position, color);
-        // public Square(); <-- TENTO ŘÁDEK BYL SMAZÁN
-        this.a = a; // Přidáno uložení délky strany
+        this.a = a;
     }
 
     @Override
     public boolean contains(Point p) {
-        return false;
+        return (p.x >= position.x && p.x < position.x + a && p.y >= position.y && p.y < position.y + a);
     }
 
-    @Override // Je dobré používat anotaci Override
+    @Override
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
