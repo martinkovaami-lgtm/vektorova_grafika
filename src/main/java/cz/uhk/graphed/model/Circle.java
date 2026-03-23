@@ -14,7 +14,8 @@ public class Circle extends AbstractGraphicObject {
     @Override
     public boolean contains(Point p) {
 
-        return (Math.pow(position.x - p.x, 2) + Math.pow(position.y - p.y, 2) ) <= r * r;
+
+        return (Math.pow(position.x + r - p.x, 2) + Math.pow(position.y + r - p.y, 2) ) <= r * r;
     }
 
     @Override
