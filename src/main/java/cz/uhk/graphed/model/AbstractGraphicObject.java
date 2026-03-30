@@ -41,4 +41,8 @@ public abstract class AbstractGraphicObject {
     public void  draw(Graphics2D g) {
         draw(g);
     }
+
+    public void move (int dx, int dy) {
+        position = new Point(dx, dy);
+    }
 }

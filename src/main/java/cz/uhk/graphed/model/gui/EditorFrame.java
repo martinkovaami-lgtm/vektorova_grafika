@@ -7,6 +7,7 @@ import cz.uhk.graphed.model.Triangle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class EditorFrame extends JFrame {
     private Canwas canwas= new Canwas();
@@ -16,6 +17,29 @@ public class EditorFrame extends JFrame {
 
         add(canwas, BorderLayout.CENTER);
 
+        private JToolBar createToolbar(){
+            JToolBar tb = new JToolBar(JToolBar.HORIZONTAL);
+            Action actSquare = new AbstractAction(){
+                public void actionPerformed(ActionEvent e) {
+                    canwas.add(new Square(new Point(0,0), Color.BLACK, 50));
+                    repaint();
+                }
+            }
+        };
+
+        Action actSquare = new AbstractAction(){
+            public void actionPerformed(ActionEvent e) {
+                canwas.add(new Square(new Point(0,0), Color.BLACK, 50));
+            }
+        };
+        actSquare.putValue(Action.SHORT_DESCRIPTION, "Namalujte Čtverec");
+
+
+        JButton btCircle = new JButton("Circle");
+        btCircle.addActionListener(e->canwas.add(new Circle(new Point(0,0), Color.BLACK, 50)));
+        add(createToolbar, BorderLayout.NORTH);
+        tb.add(actSquare);
+        return(Circle);
         initSampleData();
 
         pack();
@@ -31,6 +55,10 @@ public class EditorFrame extends JFrame {
         canwas.add(new Circle(new Point(200,200),Color.BLACK, 25));
 
         canwas.add(new Triangle(new Point(300,300), Color.BLACK, 50));
+
+        GraphicGroup group = new GraphicGroup();
+        canwas.add(group);
+        group.addItem(new Circle(new Point(10,20), Color.BLACK, 50));
 
     }
 }

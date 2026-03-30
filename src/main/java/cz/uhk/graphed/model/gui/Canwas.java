@@ -40,6 +40,15 @@ public class Canwas extends javax.swing.JPanel {
             }
         });
 
+        addMouseMotionListener((MouseMotionAdapter) mouseDragged(e) -> {
+            if (selectedObject != null) {
+                var deltaX = dx - selectedObject.getPosition().x;
+                var deltaY = dy - selectedObject.getPosition().y;
+                selectedObject.move(dx, dy);
+                repaint();
+            }
+        })
+
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
