@@ -8,7 +8,6 @@ import java.util.List;
 
 public class GraphicGroup extends AbstractGraphicObject {
 
-    // Doporučuji nastavit jako private pro lepší zapouzdření
     private List<AbstractGraphicObject> items = new ArrayList<>();
 
     public GraphicGroup() {

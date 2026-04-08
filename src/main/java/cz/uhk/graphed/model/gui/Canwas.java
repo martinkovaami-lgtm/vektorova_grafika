@@ -15,8 +15,8 @@ public class Canwas extends javax.swing.JPanel {
     private List<AbstractGraphicObject> graphicsObjects=new ArrayList<AbstractGraphicObject>();
 
     private AbstractGraphicObject selectedObject = null; // Právě držený objekt
-    private int dx = 0;
-    private int dy = 0;
+    private int dx;
+    private int dy;
 
     public Canwas() {
         setBackground(Color.white);
@@ -40,14 +40,17 @@ public class Canwas extends javax.swing.JPanel {
             }
         });
 
-        addMouseMotionListener((MouseMotionAdapter) mouseDragged(e) -> {
-            if (selectedObject != null) {
-                var deltaX = dx - selectedObject.getPosition().x;
-                var deltaY = dy - selectedObject.getPosition().y;
-                selectedObject.move(dx, dy);
-                repaint();
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (selectedObject != null) {
+                    var deltaX = e.getX() - selectedObject.getPosition().x - dx;
+                    var deltaY = e.getY() - selectedObject.getPosition().y - dy;
+                    selectedObject.move(deltaX, deltaY);
+                    repaint();
+                }
             }
-        })
+        });
 
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -84,6 +87,7 @@ public class Canwas extends javax.swing.JPanel {
 
     public void add(AbstractGraphicObject object) {
         graphicsObjects.add(object);
+        repaint();
     }
 
     public void paint(Graphics g) {

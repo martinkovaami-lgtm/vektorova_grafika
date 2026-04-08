@@ -43,6 +43,6 @@ public abstract class AbstractGraphicObject {
     }
 
     public void move (int dx, int dy) {
-        position = new Point(dx, dy);
+        position.translate(dx, dy);
     }
 }
