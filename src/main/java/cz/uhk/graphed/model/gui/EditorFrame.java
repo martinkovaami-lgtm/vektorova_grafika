@@ -40,23 +40,23 @@ public class EditorFrame extends JFrame {
         // Tlačítko pro vykreslení čtverce
         JButton btSquare = new JButton("Square");
         btSquare.setToolTipText("Namalujte Čtverec");
-        btSquare.addActionListener(e -> canwas.add(new Square(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), random.nextInt(80))));
+        btSquare.addActionListener(e -> canwas.add(new Square(new Point(random.nextInt(800), random.nextInt(600)), RandomColor(), 10 + random.nextInt(80))));
         tb.add(btSquare);
 
         // Tlačítko pro vykreslení kruhu
         JButton btCircle = new JButton("Circle");
-        btCircle.addActionListener(e -> canwas.add(new Circle(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), 10 + random.nextInt(80) )));
+        btCircle.addActionListener(e -> canwas.add(new Circle(new Point(random.nextInt(canwas.getWidth() - 150), random.nextInt(canwas.getHeight() - 150)), RandomColor(), 5 + random.nextInt(80) )));
         tb.add(btCircle);
 
 
         // obdelnik
         JButton btRectangle = new JButton("Rectangle");
-        btRectangle.addActionListener(e -> canwas.add(new Rectangle(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), random.nextInt(80), random.nextInt(80))));
+        btRectangle.addActionListener(e -> canwas.add(new Rectangle(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), 10 + random.nextInt(80), 10 + random.nextInt(80))));
         tb.add(btRectangle);
 
         //trojuhelnik
         JButton btTriangle = new JButton("Triangle");
-        btTriangle.addActionListener(e -> canwas.add(new Triangle(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), random.nextInt(80))));
+        btTriangle.addActionListener(e -> canwas.add(new Triangle(new Point(random.nextInt(canwas.getWidth()), random.nextInt(canwas.getHeight())), RandomColor(), 10 + random.nextInt(80))));
         tb.add(btTriangle);
         return tb;
     }

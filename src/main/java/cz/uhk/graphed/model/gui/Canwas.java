@@ -58,6 +58,7 @@ public class Canwas extends javax.swing.JPanel {
                 AbstractGraphicObject o = FindObjectContaining(e.getPoint());
                 if (o != null) {
                     o.setPosition(e.getX()-dx, e.getY()-dy);
+
                     repaint();
                 }
             }
@@ -74,7 +75,7 @@ public class Canwas extends javax.swing.JPanel {
         });
 
     }
-
+    //poslední objekt
     private AbstractGraphicObject findObjectContaining(Point p) {
         for (int i = graphicsObjects.size() - 1; i >= 0; i--) {
             AbstractGraphicObject obj = graphicsObjects.get(i);
